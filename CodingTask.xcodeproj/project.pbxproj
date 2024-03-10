@@ -15,6 +15,7 @@
 		7C73BD262B9E106D000E2406 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C73BD242B9E106D000E2406 /* LaunchScreen.storyboard */; };
 		7C73BD312B9E106E000E2406 /* CodingTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD302B9E106E000E2406 /* CodingTaskTests.swift */; };
 		7C73BD3C2B9E106E000E2406 /* CodingTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD3B2B9E106E000E2406 /* CodingTaskUITests.swift */; };
+		7C73BD4B2B9E1238000E2406 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD4A2B9E1238000E2406 /* RegisterModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7C73BD372B9E106E000E2406 /* CodingTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C73BD3B2B9E106E000E2406 /* CodingTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingTaskUITests.swift; sourceTree = "<group>"; };
 		7C73BD3D2B9E106E000E2406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C73BD4A2B9E1238000E2406 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		7C73BD182B9E106C000E2406 /* CodingTask */ = {
 			isa = PBXGroup;
 			children = (
+				7C73BD492B9E1222000E2406 /* Model */,
 				7C73BD192B9E106C000E2406 /* AppDelegate.swift */,
 				7C73BD1B2B9E106C000E2406 /* SceneDelegate.swift */,
 				7C73BD1D2B9E106C000E2406 /* ViewController.swift */,
@@ -126,6 +129,14 @@
 				7C73BD3D2B9E106E000E2406 /* Info.plist */,
 			);
 			path = CodingTaskUITests;
+			sourceTree = "<group>";
+		};
+		7C73BD492B9E1222000E2406 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C73BD4A2B9E1238000E2406 /* RegisterModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C73BD4B2B9E1238000E2406 /* RegisterModel.swift in Sources */,
 				7C73BD1E2B9E106C000E2406 /* ViewController.swift in Sources */,
 				7C73BD1A2B9E106C000E2406 /* AppDelegate.swift in Sources */,
 				7C73BD1C2B9E106C000E2406 /* SceneDelegate.swift in Sources */,
