@@ -7,13 +7,17 @@
 
 import UIKit
 
+protocol RegisterViewDelegate: AnyObject {
+    func registerButtonDidTap()
+}
+
 class RegisterView: UIView {
     
     let nameTextField = UITextField()
     let emailTextField = UITextField()
     let birthdayTextField = UITextField()
     let registerButton = UIButton()
-
+    weak var delegate: RegisterViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,8 +56,32 @@ class RegisterView: UIView {
         registerButton.backgroundColor = .systemGreen
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.layer.cornerRadius = 10
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
 
+    // Register Button
+    @objc private func registerButtonTapped() {
+        guard let name = nameTextField.text,
+              let email = emailTextField.text,
+              let birthdayString = birthdayTextField.text else {
+            print("Missing information")
+            return
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        guard let birthdayDate = dateFormatter.date(from: birthdayString) else {
+            print("Invalid birthday format")
+            return
+        }
+        
+        let registrationModel = RegistrationModel(name: name, email: email, birthday: birthdayDate)
+        if registrationModel.isValid() {
+            delegate?.registerButtonDidTap()
+        } else {
+            print("Invalid registration details")
+        }
+    }
     
     private func setupConstraints() {
         // Constraints for nameTextField
@@ -77,12 +105,12 @@ class RegisterView: UIView {
             birthdayTextField.widthAnchor.constraint(equalTo: nameTextField.widthAnchor)
         ])
         
-        // Constraints for RegistButton
+        // Constraints for RegisterButton
         NSLayoutConstraint.activate([
-                registerButton.topAnchor.constraint(equalTo: birthdayTextField.bottomAnchor, constant: 20),
-                registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-                registerButton.widthAnchor.constraint(equalTo: nameTextField.widthAnchor),
-                registerButton.heightAnchor.constraint(equalToConstant: 50)
-            ])
+            registerButton.topAnchor.constraint(equalTo: birthdayTextField.bottomAnchor, constant: 20),
+            registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            registerButton.widthAnchor.constraint(equalTo: nameTextField.widthAnchor),
+            registerButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }

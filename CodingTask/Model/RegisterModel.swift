@@ -21,7 +21,7 @@ struct RegistrationModel {
     }
     
     func isValidEmail() -> Bool {
-        let regex = "^[^@]+@[^@.]+\\.[^@.]{2,}$"
+        let regex = "^[^@]+@[^@.]+\\.[^@.]+$"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", regex)
         return emailPred.evaluate(with: email)
     }

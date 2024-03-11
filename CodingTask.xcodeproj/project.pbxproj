@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C73BD1A2B9E106C000E2406 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD192B9E106C000E2406 /* AppDelegate.swift */; };
 		7C73BD1C2B9E106C000E2406 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD1B2B9E106C000E2406 /* SceneDelegate.swift */; };
-		7C73BD1E2B9E106C000E2406 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD1D2B9E106C000E2406 /* RegisterController.swift */; };
+		7C73BD1E2B9E106C000E2406 /* ConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD1D2B9E106C000E2406 /* ConfirmationController.swift */; };
 		7C73BD212B9E106C000E2406 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C73BD1F2B9E106C000E2406 /* Main.storyboard */; };
 		7C73BD232B9E106D000E2406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C73BD222B9E106D000E2406 /* Assets.xcassets */; };
 		7C73BD262B9E106D000E2406 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C73BD242B9E106D000E2406 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,8 @@
 		7C73BD3C2B9E106E000E2406 /* CodingTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD3B2B9E106E000E2406 /* CodingTaskUITests.swift */; };
 		7C73BD4B2B9E1238000E2406 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD4A2B9E1238000E2406 /* RegisterModel.swift */; };
 		7C73BD502B9E2BB7000E2406 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C73BD4F2B9E2BB7000E2406 /* RegisterView.swift */; };
+		7CDE79362B9F30230002BE51 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE79352B9F30230002BE51 /* ConfirmationView.swift */; };
+		7CDE79382B9F308F0002BE51 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE79372B9F308F0002BE51 /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,7 @@
 		7C73BD162B9E106C000E2406 /* CodingTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C73BD192B9E106C000E2406 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C73BD1B2B9E106C000E2406 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7C73BD1D2B9E106C000E2406 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		7C73BD1D2B9E106C000E2406 /* ConfirmationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationController.swift; sourceTree = "<group>"; };
 		7C73BD202B9E106C000E2406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C73BD222B9E106D000E2406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C73BD252B9E106D000E2406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		7C73BD3D2B9E106E000E2406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C73BD4A2B9E1238000E2406 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		7C73BD4F2B9E2BB7000E2406 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		7CDE79352B9F30230002BE51 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		7CDE79372B9F308F0002BE51 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +149,8 @@
 		7C73BD4C2B9E1F55000E2406 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7C73BD1D2B9E106C000E2406 /* RegisterController.swift */,
+				7C73BD1D2B9E106C000E2406 /* ConfirmationController.swift */,
+				7CDE79372B9F308F0002BE51 /* DetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				7C73BD4F2B9E2BB7000E2406 /* RegisterView.swift */,
+				7CDE79352B9F30230002BE51 /* ConfirmationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,8 +295,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C73BD4B2B9E1238000E2406 /* RegisterModel.swift in Sources */,
+				7CDE79382B9F308F0002BE51 /* DetailController.swift in Sources */,
+				7CDE79362B9F30230002BE51 /* ConfirmationView.swift in Sources */,
 				7C73BD502B9E2BB7000E2406 /* RegisterView.swift in Sources */,
-				7C73BD1E2B9E106C000E2406 /* RegisterController.swift in Sources */,
+				7C73BD1E2B9E106C000E2406 /* ConfirmationController.swift in Sources */,
 				7C73BD1A2B9E106C000E2406 /* AppDelegate.swift in Sources */,
 				7C73BD1C2B9E106C000E2406 /* SceneDelegate.swift in Sources */,
 			);
