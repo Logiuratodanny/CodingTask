@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  CodingTask
 //
-//  Created by Carmelina Logiurato on 10.03.24.
+//  Created by Danny Logiurato on 10.03.24.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
 
         // Create an instance of the initial view controller
-        let initialViewController = ConfirmationController()
+        let initialViewController = RegisterController()
 
         // Create a navigation controller with the initial view controller
         let navigationController = UINavigationController(rootViewController: initialViewController)

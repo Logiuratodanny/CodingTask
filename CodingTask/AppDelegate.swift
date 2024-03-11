@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CodingTask
 //
-//  Created by Carmelina Logiurato on 10.03.24.
+//  Created by Danny Logiurato on 10.03.24.
 //
 
 import UIKit

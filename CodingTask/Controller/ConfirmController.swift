@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailController: UIViewController {
+class ConfirmController: UIViewController {
     
     var confermationView: ConfirmationView!
     var userdata: [String: String]?

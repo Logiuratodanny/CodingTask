@@ -9,6 +9,7 @@ import UIKit
 
 protocol RegisterViewDelegate: AnyObject {
     func registerButtonDidTap()
+    func presentAlert(withTitle title: String, message: String)
 }
 
 class RegisterView: UIView {
@@ -61,27 +62,28 @@ class RegisterView: UIView {
 
     // Register Button
     @objc private func registerButtonTapped() {
-        guard let name = nameTextField.text,
-              let email = emailTextField.text,
-              let birthdayString = birthdayTextField.text else {
-            print("Missing information")
-            return
-        }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        guard let birthdayDate = dateFormatter.date(from: birthdayString) else {
-            print("Invalid birthday format")
+        guard let name = nameTextField.text, !name.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let birthdayString = birthdayTextField.text, !birthdayString.isEmpty else {
+            delegate?.presentAlert(withTitle: "Error", message: "Please fill all fields.")
             return
         }
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        guard let birthdayDate = dateFormatter.date(from: birthdayString) else {
+            delegate?.presentAlert(withTitle: "Error", message: "Invalid Birthday format.")
+            return
+        }
+
         let registrationModel = RegistrationModel(name: name, email: email, birthday: birthdayDate)
         if registrationModel.isValid() {
             delegate?.registerButtonDidTap()
         } else {
-            print("Invalid registration details")
+            delegate?.presentAlert(withTitle: "Error", message: "Invalid registration details")
         }
     }
+    
     
     private func setupConstraints() {
         // Constraints for nameTextField
