@@ -16,7 +16,7 @@ struct RegistrationModel {
         return validateName() && isValidEmail() && validateBirthday()
     }
     
-    private func validateName() -> Bool {
+    func validateName() -> Bool {
         return !name.isEmpty && name.count < 25
     }
     
@@ -26,7 +26,7 @@ struct RegistrationModel {
         return emailPred.evaluate(with: email)
     }
     
-    private func validateBirthday() -> Bool {
+    func validateBirthday() -> Bool {
         let calendar = Calendar.current
         var components = DateComponents()
         components.year = 1900
