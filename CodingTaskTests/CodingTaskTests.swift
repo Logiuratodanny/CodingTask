@@ -9,7 +9,7 @@ import XCTest
 @testable import CodingTask
 
 class RegistrationModelTests: XCTestCase {
-
+    
     private func testValidName() {
         let registration = RegistrationModel(name: "Danny", email: "Danny@test.com", birthday: Date())
         XCTAssertTrue(registration.validateName(), "Valid name failed validation.")
@@ -32,7 +32,7 @@ class RegistrationModelTests: XCTestCase {
         dateComponent.month = 1
         dateComponent.day = 1
         let validBirthday = calendar.date(from: dateComponent)!
-
+        
         let registration = RegistrationModel(name: "Danny", email: "Danny@test.com", birthday: validBirthday)
         XCTAssertTrue(registration.validateBirthday(), "Valid registration failed")
     }
@@ -44,7 +44,7 @@ class RegistrationModelTests: XCTestCase {
         dateComponent.month = 1
         dateComponent.day = 1
         let invalidBirthday = calendar.date(from: dateComponent)!
-
+        
         // All valid
         let registration = RegistrationModel(name: "Danny", email: "Danny@test.com", birthday: invalidBirthday)
         XCTAssertFalse(registration.validateBirthday(), "Invalid Birthday")

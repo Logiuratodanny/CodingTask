@@ -20,7 +20,7 @@ class RegisterView: UIView {
     let registerButton = UIButton(type: .system)
     let titleLabel = UILabel()
     weak var delegate: RegisterViewDelegate?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -67,7 +67,7 @@ class RegisterView: UIView {
             textField.layer.cornerRadius = 7.0
             textField.translatesAutoresizingMaskIntoConstraints = false
         }
-
+        
         // Add name to textfield
         nameTextField.placeholder = "Name"
         emailTextField.placeholder = "Email"
@@ -83,13 +83,13 @@ class RegisterView: UIView {
         registerButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
-
+    
     // MARK: - Validating that Textfield is not empty
     @objc private func registerButtonTapped() {
         if let name = nameTextField.text, !name.isEmpty,
            let email = emailTextField.text, !email.isEmpty,
            let birthday = birthdayTextField.text, !birthday.isEmpty {
-                delegate?.registerButtonDidTap(withName: name, email: email, birthday: birthday)
+            delegate?.registerButtonDidTap(withName: name, email: email, birthday: birthday)
         }
     }
     
@@ -100,11 +100,11 @@ class RegisterView: UIView {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-
+    
     @objc private func textFieldDidChange() {
         let areAllFieldsFilled = !(nameTextField.text?.isEmpty ?? true) &&
-                                 !(emailTextField.text?.isEmpty ?? true) &&
-                                 !(birthdayTextField.text?.isEmpty ?? true)
+            !(emailTextField.text?.isEmpty ?? true) &&
+            !(birthdayTextField.text?.isEmpty ?? true)
         registerButton.isEnabled = areAllFieldsFilled
         registerButton.backgroundColor = areAllFieldsFilled ? .systemGreen : .lightGray
     }

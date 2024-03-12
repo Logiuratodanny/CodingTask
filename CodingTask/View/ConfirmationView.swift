@@ -28,7 +28,7 @@ class ConfirmationView: UIView {
         let birthday = userDetails["birthday"] ?? ""
         confirmationLabel.text = "Danke für die Registrierung\n" + "Name: \(name)\nEmail: \(email)\nBirthday: \(birthday)"
     }
-
+    
     // MARK: - Setup
     private func setupViews() {
         self.backgroundColor = .systemBackground
