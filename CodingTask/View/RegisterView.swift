@@ -17,7 +17,7 @@ class RegisterView: UIView {
     let nameTextField = UITextField()
     let emailTextField = UITextField()
     let birthdayTextField = UITextField()
-    let registerButton = UIButton()
+    let registerButton = UIButton(type: .system)
     let titleLabel = UILabel()
     weak var delegate: RegisterViewDelegate?
 
@@ -32,48 +32,61 @@ class RegisterView: UIView {
     }
     
     private func setupViews() {
-        self.backgroundColor = .white
-        
-        //Setup title Label
+        backgroundColor = .white
+        addSubviews()
+        configureTitleLabel()
+        configureTextFields()
+        configureRegisterButton()
+        initializeTextFieldObservers()
+    }
+    
+    private func addSubviews() {
+        addSubview(titleLabel)
+        addSubview(nameTextField)
+        addSubview(emailTextField)
+        addSubview(birthdayTextField)
+        addSubview(registerButton)
+    }
+    
+    private func configureTitleLabel() {
         titleLabel.text = "Register"
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         titleLabel.textAlignment = .center
-        self.addSubview(titleLabel)
-        
-        //Remove Autolayout
-        [nameTextField, emailTextField, birthdayTextField, registerButton, titleLabel].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview($0)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configureTextFields() {
+        let textFields = [nameTextField, emailTextField, birthdayTextField]
+        textFields.forEach { textField in
+            textField.borderStyle = .roundedRect
+            textField.layer.borderColor = UIColor.black.cgColor
+            textField.layer.borderWidth = 1.0
+            textField.layer.cornerRadius = 7.0
+            textField.translatesAutoresizingMaskIntoConstraints = false
         }
 
         // Add name to textfield
         nameTextField.placeholder = "Name"
         emailTextField.placeholder = "Email"
         birthdayTextField.placeholder = "Birthday"
-        
-        // Customize the textfields
-        [nameTextField, emailTextField, birthdayTextField].forEach {
-            $0.borderStyle = .roundedRect
-            $0.layer.borderColor = UIColor.black.cgColor
-            $0.layer.borderWidth = 1.0
-            $0.layer.cornerRadius = 7.0
-        }
-
-        // Customize the register button
+    }
+    
+    private func configureRegisterButton() {
         registerButton.setTitle("Register", for: .normal)
-        registerButton.backgroundColor = .systemGreen
+        registerButton.backgroundColor = .lightGray
+        registerButton.isEnabled = false
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.layer.cornerRadius = 10
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
 
     // Register Button
     @objc private func registerButtonTapped() {
         guard let name = nameTextField.text, !name.isEmpty,
-            let email = emailTextField.text, !email.isEmpty,
-            let birthdayString = birthdayTextField.text, !birthdayString.isEmpty else {
-            delegate?.presentAlert(withTitle: "Error", message: "Please fill all fields.")
+              let email = emailTextField.text, !email.isEmpty,
+              let birthdayString = birthdayTextField.text, !birthdayString.isEmpty else {
             return
         }
         
@@ -88,10 +101,24 @@ class RegisterView: UIView {
         if registrationModel.isValid() {
             delegate?.registerButtonDidTap()
         } else {
-            delegate?.presentAlert(withTitle: "Error", message: "Invalid registration details")
+            delegate?.presentAlert(withTitle: "Error", message: "Invalid registration details.")
         }
     }
     
+    private func initializeTextFieldObservers() {
+        [nameTextField, emailTextField, birthdayTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+
+    @objc private func textFieldDidChange() {
+        let areAllFieldsFilled = !(nameTextField.text?.isEmpty ?? true) &&
+                                 !(emailTextField.text?.isEmpty ?? true) &&
+                                 !(birthdayTextField.text?.isEmpty ?? true)
+        registerButton.isEnabled = areAllFieldsFilled
+        registerButton.backgroundColor = areAllFieldsFilled ? .systemGreen : .lightGray
+    }
     
     private func setupConstraints() {
         // Constraints for nameTextField
@@ -126,7 +153,7 @@ class RegisterView: UIView {
         // Constraints for titleLabel
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: nameTextField.topAnchor, constant: -40), // Adjust the spacing as needed
+            titleLabel.bottomAnchor.constraint(equalTo: nameTextField.topAnchor, constant: -40),
             titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
         ])
     }

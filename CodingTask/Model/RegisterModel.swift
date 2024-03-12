@@ -17,7 +17,7 @@ struct RegistrationModel {
     }
     
     private func validateName() -> Bool {
-        return !name.isEmpty
+        return !name.isEmpty && name.count < 25
     }
     
     func isValidEmail() -> Bool {
