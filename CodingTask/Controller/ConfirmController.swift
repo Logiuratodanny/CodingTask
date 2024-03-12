@@ -12,6 +12,7 @@ class ConfirmController: UIViewController {
     var confermationView: ConfirmationView!
     var userdata: [String: String]?
     
+    // MARK: - Lifecycle
     override func loadView() {
         super.loadView()
         confermationView = ConfirmationView()

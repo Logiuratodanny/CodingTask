@@ -20,7 +20,16 @@ class ConfirmationView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Update view with registrationdetails
+    func updateWithDetails(_ userDetails: [String: String]) {
+        let name = userDetails["name"] ?? ""
+        let email = userDetails["email"] ?? ""
+        let birthday = userDetails["birthday"] ?? ""
+        confirmationLabel.text = "Danke für die Registrierung\n" + "Name: \(name)\nEmail: \(email)\nBirthday: \(birthday)"
+    }
 
+    // MARK: - Setup
     private func setupViews() {
         self.backgroundColor = .white
         confirmationLabel.textAlignment = .center
@@ -37,13 +46,5 @@ class ConfirmationView: UIView {
             confirmationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             confirmationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
-    }
-    
-    //Update Label with User Input
-    func updateWithDetails(_ userDetails: [String: String]) {
-        let name = userDetails["name"] ?? ""
-        let email = userDetails["email"] ?? ""
-        let birthday = userDetails["birthday"] ?? ""
-        confirmationLabel.text = "Danke für die Registrierung\n" + "Name: \(name)\nEmail: \(email)\nBirthday: \(birthday)"
     }
 }

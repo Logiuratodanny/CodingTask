@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RegisterViewDelegate: AnyObject {
-    func registerButtonDidTap()
+    func registerButtonDidTap(withName name: String, email: String, birthday: String)
     func presentAlert(withTitle title: String, message: String)
 }
 
@@ -31,6 +31,7 @@ class RegisterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup
     private func setupViews() {
         backgroundColor = .white
         addSubviews()
@@ -48,6 +49,7 @@ class RegisterView: UIView {
         addSubview(registerButton)
     }
     
+    // MARK: - Configuration of Buttons and Labels
     private func configureTitleLabel() {
         titleLabel.text = "Register"
         titleLabel.textColor = .black
@@ -82,29 +84,16 @@ class RegisterView: UIView {
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
 
-    // Register Button
+    // MARK: - Validating that Textfield is not empty
     @objc private func registerButtonTapped() {
-        guard let name = nameTextField.text, !name.isEmpty,
-              let email = emailTextField.text, !email.isEmpty,
-              let birthdayString = birthdayTextField.text, !birthdayString.isEmpty else {
-            return
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        guard let birthdayDate = dateFormatter.date(from: birthdayString) else {
-            delegate?.presentAlert(withTitle: "Error", message: "Invalid Birthday format.")
-            return
-        }
-
-        let registrationModel = RegistrationModel(name: name, email: email, birthday: birthdayDate)
-        if registrationModel.isValid() {
-            delegate?.registerButtonDidTap()
-        } else {
-            delegate?.presentAlert(withTitle: "Error", message: "Invalid registration details.")
+        if let name = nameTextField.text, !name.isEmpty,
+           let email = emailTextField.text, !email.isEmpty,
+           let birthday = birthdayTextField.text, !birthday.isEmpty {
+                delegate?.registerButtonDidTap(withName: name, email: email, birthday: birthday)
         }
     }
     
+    // MARK: - Disable/Enable Button
     private func initializeTextFieldObservers() {
         [nameTextField, emailTextField, birthdayTextField].forEach {
             $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -120,6 +109,7 @@ class RegisterView: UIView {
         registerButton.backgroundColor = areAllFieldsFilled ? .systemGreen : .lightGray
     }
     
+    // MARK: - Constraints
     private func setupConstraints() {
         // Constraints for nameTextField
         NSLayoutConstraint.activate([

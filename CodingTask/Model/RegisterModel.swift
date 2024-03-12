@@ -12,20 +12,24 @@ struct RegistrationModel {
     var email: String
     var birthday: Date
     
+    // MARK: - Validating all
     func isValid() -> Bool {
         return validateName() && isValidEmail() && validateBirthday()
     }
     
+    // MARK: - Validating Validate Name
     func validateName() -> Bool {
         return !name.isEmpty && name.count < 25
     }
     
+    // MARK: - Validating Email
     func isValidEmail() -> Bool {
         let regex = "^[^@]+@[^@.]+\\.[^@.]+$"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", regex)
         return emailPred.evaluate(with: email)
     }
     
+    // MARK: - Validating Birthday
     func validateBirthday() -> Bool {
         let calendar = Calendar.current
         var components = DateComponents()
