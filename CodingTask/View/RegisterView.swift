@@ -33,7 +33,7 @@ class RegisterView: UIView {
     
     // MARK: - Setup
     private func setupViews() {
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         addSubviews()
         configureTitleLabel()
         configureTextFields()

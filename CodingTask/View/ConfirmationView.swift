@@ -31,7 +31,7 @@ class ConfirmationView: UIView {
 
     // MARK: - Setup
     private func setupViews() {
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         confirmationLabel.textAlignment = .center
         confirmationLabel.numberOfLines = 0
         confirmationLabel.translatesAutoresizingMaskIntoConstraints = false
