@@ -18,6 +18,7 @@ class RegisterView: UIView {
     let emailTextField = UITextField()
     let birthdayTextField = UITextField()
     let registerButton = UIButton()
+    let titleLabel = UILabel()
     weak var delegate: RegisterViewDelegate?
 
     override init(frame: CGRect) {
@@ -33,8 +34,15 @@ class RegisterView: UIView {
     private func setupViews() {
         self.backgroundColor = .white
         
+        //Setup title Label
+        titleLabel.text = "Register"
+        titleLabel.textColor = .black
+        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        titleLabel.textAlignment = .center
+        self.addSubview(titleLabel)
+        
         //Remove Autolayout
-        [nameTextField, emailTextField, birthdayTextField, registerButton].forEach {
+        [nameTextField, emailTextField, birthdayTextField, registerButton, titleLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
@@ -113,6 +121,13 @@ class RegisterView: UIView {
             registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             registerButton.widthAnchor.constraint(equalTo: nameTextField.widthAnchor),
             registerButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        // Constraints for titleLabel
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: nameTextField.topAnchor, constant: -40), // Adjust the spacing as needed
+            titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
         ])
     }
 }
